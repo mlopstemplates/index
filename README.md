@@ -1,4 +1,6 @@
-## Welcome to GitHub Pages
+## Welcome to MLops Templates Pages
+
+Mlops Templates targets coming up with possible example templates for you machine learning operations. 
 
 You can use the [editor on GitHub](https://github.com/mlopstemplates/index/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
 

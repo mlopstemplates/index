@@ -105,7 +105,7 @@ lang=EN style='font-size:12.0pt;line-height:120%;font-family:"Open Sans";
 color:windowtext'><img width=621 height=11 id=image1.png
 src="AzureEventGrid-GitHub%20Integration_files/image001.gif"
 alt="horizontal line"></span><span lang=EN style='font-size:12.0pt;line-height:
-120%;font-family:"Open Sans";color:windowtext'> </span></h2>
+120%;font-family:"Open Sans";color:windowtext'>Â </span></h2>
 
 <p class=MsoNormal style='border:none'><span lang=EN><img width=621 height=414
 id=image3.jpg src="AzureEventGrid-GitHub%20Integration_files/image002.jpg"
@@ -388,7 +388,7 @@ end to end looks like the diagram below, with 3 important steps and each step
 is performed by a different actor. </span></p>
 
 <p class=MsoNormal style='border:none'><span lang=EN>Each step in general needs
-various sub actions to complete the tasks.  It is clear that all 3 things done
+various sub actions to complete the tasks.Â  It is clear that all 3 things done
 by a single persona are quite overwhelming and thus need support. </span></p>
 
 <p class=MsoNormal style='border:none'><span lang=EN>&nbsp;</span></p>
@@ -447,7 +447,7 @@ information please visit the above given two repositories</span></i></b></p>
 
 <h1><a name="_8pws0zbsw83p"></a><span lang=EN>Problem at Hand</span></h1>
 
-<p class=MsoNormal><span lang=EN>Current implementation doesn’t inherently
+<p class=MsoNormal><span lang=EN>Current implementation doesnÂ’t inherently
 support the de-coupling of build and deploy, part. So the workflow waits till
 training is completed in Azure Machine Learning. </span></p>
 
@@ -477,7 +477,7 @@ workflow.</span></p>
 <p class=MsoNormal><span lang=EN>But today , the two systems do not talk to
 each other seamlessly. </span></p>
 
-<p class=MsoNormal><span lang=EN>Azure Machine Learning  uses Event Grid to
+<p class=MsoNormal><span lang=EN>Azure Machine LearningÂ  uses Event Grid to
 generate different events, and GitHub uses a repository_dispatch webhook to
 trigger a workflow together. </span></p>
 
@@ -610,7 +610,7 @@ margin-left:0in;background:white'><span lang=EN style='font-size:11.5pt;
 line-height:120%;font-family:"Arial",sans-serif;color:#373737'>As an
 architectural guideline, every REST endpoint needs to be exposed through Azure
 API Management. Therefore, we intend to expose these HTTP triggered Functions
-via API Management as well.  Also guidelines are that everything is deployed as
+via API Management as well.Â  Also guidelines are that everything is deployed as
 Infrastructure as Code, so we do this through ARM templates. We dive into the
 security side of this, and how to set this up in ARM.</span></p>
 
@@ -622,7 +622,7 @@ lang=EN>Security</span></h3>
 margin-left:0in;background:white'><span lang=EN style='font-size:11.5pt;
 line-height:120%;font-family:"Arial",sans-serif;color:#373737'>When working
 with HTTP triggered Functions, there are several options for setting up their
-security. These consist of having anonymous authorization, where we don’t need
+security. These consist of having anonymous authorization, where we donÂ’t need
 to provide any API key, or using a function or master key. Of course, we will
 normally not use anonymous authorization, as we are exposing our data and
 processes, and as such want to limit access to these. Consequently, when
@@ -643,13 +643,13 @@ App.</span></p>
 margin-left:0in;line-height:normal;background:white'><span lang=EN
 style='font-size:11.5pt;font-family:"Arial",sans-serif;color:#373737;
 background:lime'>{<br>
-    &quot;type&quot;: &quot;Microsoft.Web/sites/host/functionKeys&quot;,<br>
-    &quot;apiVersion&quot;: &quot;2018-11-01&quot;,<br>
-    &quot;name&quot;: &quot;[concat(parameters('functionAppName'),
+Â Â Â  &quot;type&quot;: &quot;Microsoft.Web/sites/host/functionKeys&quot;,<br>
+Â Â Â  &quot;apiVersion&quot;: &quot;2018-11-01&quot;,<br>
+Â Â Â  &quot;name&quot;: &quot;[concat(parameters('functionAppName'),
 '/default/apimanagement')]&quot;,<br>
-    &quot;properties&quot;: {<br>
-        &quot;name&quot;: &quot;api-management&quot;<br>
-    }<br>
+Â Â Â  &quot;properties&quot;: {<br>
+Â Â Â Â Â Â Â  &quot;name&quot;: &quot;api-management&quot;<br>
+Â Â Â  }<br>
 }</span></p>
 
 <p class=MsoNormal style='margin-top:0in;margin-right:0in;margin-bottom:.25in;
@@ -730,30 +730,30 @@ line-height:120%;font-family:"Arial",sans-serif;color:#373737'>&nbsp;</span></p>
   <p class=MsoNormal style='margin-top:0in;margin-right:0in;margin-bottom:.25in;
   margin-left:0in;background:white'><span lang=EN style='font-size:11.5pt;
   line-height:120%;font-family:"Arial",sans-serif;color:#373737'>{<br>
-      &quot;type&quot;: &quot;Microsoft.ApiManagement/service/backends&quot;,<br>
-      &quot;apiVersion&quot;: &quot;2019-01-01&quot;,<br>
-      &quot;name&quot;: &quot;[concat(parameters('apiManagementInstanceName'),
+  Â Â Â  &quot;type&quot;: &quot;Microsoft.ApiManagement/service/backends&quot;,<br>
+  Â Â Â  &quot;apiVersion&quot;: &quot;2019-01-01&quot;,<br>
+  Â Â Â  &quot;name&quot;: &quot;[concat(parameters('apiManagementInstanceName'),
   '/', parameters('functionAppName'))]&quot;,<br>
-      &quot;dependsOn&quot;: [<br>
-          &quot;[resourceId('Microsoft.ApiManagement/service',
+  Â Â Â  &quot;dependsOn&quot;: [<br>
+  Â Â Â Â Â Â Â  &quot;[resourceId('Microsoft.ApiManagement/service',
   parameters('apiManagementInstanceName'))]&quot;<br>
-      ],<br>
-      &quot;properties&quot;: {<br>
-          &quot;url&quot;: &quot;[concat('https://',
+  Â Â Â  ],<br>
+  Â Â Â  &quot;properties&quot;: {<br>
+  Â Â Â Â Â Â Â  &quot;url&quot;: &quot;[concat('https://',
   parameters('functionAppName'), '.azurewebsites.net/api')]&quot;,<br>
-          &quot;protocol&quot;: &quot;http&quot;,<br>
-          &quot;resourceId&quot;: &quot;[concat('https://management.azure.com/subscriptions/',
+  Â Â Â Â Â Â Â  &quot;protocol&quot;: &quot;http&quot;,<br>
+  Â Â Â Â Â Â Â  &quot;resourceId&quot;: &quot;[concat('https://management.azure.com/subscriptions/',
   subscription().subscriptionId, '/resourceGroups/', resourceGroup().name,
   '/providers/Microsoft.Web/sites/', parameters('functionAppName'))]&quot;,<br>
-          &quot;credentials&quot;: {<br>
-              &quot;header&quot;: {<br>
-                  &quot;x-functions-key&quot;: [<br>
-                      &quot;[listkeys(concat(variables('functionAppId'),
+  Â Â Â Â Â Â Â  &quot;credentials&quot;: {<br>
+  Â Â Â Â Â Â Â Â Â Â Â  &quot;header&quot;: {<br>
+  Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â  &quot;x-functions-key&quot;: [<br>
+  Â Â Â  Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â &quot;[listkeys(concat(variables('functionAppId'),
   '/host/default/'),'2016-08-01').functionKeys.apimanagement]&quot;<br>
-                  ]<br>
-              }<br>
-          }<br>
-      }<br>
+  Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â  ]<br>
+  Â Â Â Â Â Â Â Â Â Â Â  }<br>
+  Â Â Â Â Â Â Â  }<br>
+  Â Â Â  }<br>
   }</span></p>
   </td>
  </tr>
@@ -772,7 +772,7 @@ without the need to create any secrets ourselves. </span></p>
 <p class=MsoNormal style='margin-top:0in;margin-right:0in;margin-bottom:.25in;
 margin-left:0in;background:white'><span lang=EN style='font-size:11.5pt;
 line-height:120%;font-family:"Arial",sans-serif;color:#373737'>The example ARM
-template to deploy the resources with this post can be found at  </span><span
+template to deploy the resources with this post can be found atÂ  </span><span
 lang=EN><a href="https://github.com/mlopstemplates/arm_templates"><span
 style='font-size:11.5pt;line-height:120%;font-family:"Arial",sans-serif;
 color:#1155CC'>GitHub page.</span></a></span></p>
@@ -813,7 +813,7 @@ color:black;background:yellow'>&quot;Microsoft.MachineLearningServices.ModelRegi
 
 <p class=MsoNormal style='margin-top:0in;margin-right:0in;margin-bottom:8.0pt;
 margin-left:0in;line-height:107%'><span lang=EN style='font-family:"Calibri",sans-serif;
-color:black;background:yellow'> &quot;Microsoft.MachineLearningServices.ModelDeployed&quot;,</span></p>
+color:black;background:yellow'>Â &quot;Microsoft.MachineLearningServices.ModelDeployed&quot;,</span></p>
 
 <p class=MsoNormal style='margin-top:0in;margin-right:0in;margin-bottom:8.0pt;
 margin-left:0in;line-height:107%'><span lang=EN style='font-family:"Calibri",sans-serif;
@@ -821,11 +821,11 @@ color:black;background:yellow'>&quot;Microsoft.MachineLearningServices.RunComple
 
 <p class=MsoNormal style='margin-top:0in;margin-right:0in;margin-bottom:8.0pt;
 margin-left:0in;line-height:107%'><span lang=EN style='font-family:"Calibri",sans-serif;
-color:black;background:yellow'> &quot;Microsoft.MachineLearningServices.DatasetDriftDetected&quot;,</span></p>
+color:black;background:yellow'>Â &quot;Microsoft.MachineLearningServices.DatasetDriftDetected&quot;,</span></p>
 
 <p class=MsoNormal style='margin-top:0in;margin-right:0in;margin-bottom:8.0pt;
 margin-left:0in;line-height:107%'><span lang=EN style='font-family:"Calibri",sans-serif;
-color:black;background:yellow'> &quot;Microsoft.MachineLearningServices.RunStatusChanged&quot;</span></p>
+color:black;background:yellow'>Â &quot;Microsoft.MachineLearningServices.RunStatusChanged&quot;</span></p>
 
 <p class=MsoNormal style='margin-top:0in;margin-right:0in;margin-bottom:8.0pt;
 margin-left:0in;line-height:107%'><span lang=EN style='font-family:"Calibri",sans-serif;
@@ -833,7 +833,7 @@ color:black'>&nbsp;</span></p>
 
 <p class=MsoNormal style='margin-top:0in;margin-right:0in;margin-bottom:8.0pt;
 margin-left:0in;line-height:107%'><span lang=EN style='font-family:"Calibri",sans-serif;
-color:black'>These event’s must be mapped properly in the client payload and
+color:black'>These eventÂ’s must be mapped properly in the client payload and
 accessed via github event object </span></p>
 
 <p class=MsoNormal style='margin-top:0in;margin-right:0in;margin-bottom:8.0pt;

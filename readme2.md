@@ -1,6 +1,6 @@
 this is just a test file
 
 
-| Model         | commitId | PR           |  Actor   | Description i.e. commit message |tags|
-| --------------------- | -------- | ------------------------ | ---------- | ----------- |--------|
-| Link to Model on AML       |  <COMMIT HASH>        | <PR ID OR LINK>                      | User  | Cat identifying and dashes. | cat |
+|Model Name| Version | Actor | Branch  | CommitId|
+|----------|---------|-------|---------|---------|
+|aml_infra-master | 2|  ashishonce | refs/heads/master |1da42622f028e5703597398664ece2cebcab8258  |

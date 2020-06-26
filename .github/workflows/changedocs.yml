@@ -19,7 +19,7 @@ jobs:
     - name: Create local changes
       uses: mlopstemplates/markdown_convertor@master
       with: 
-        payload_data: "${{ github.event.client_payload.data }}"
+        payload_data: "${{ toJson(github.event.client_payload.data) }}"
         json_file: "modeltrackingdata.json"
 
     - name: Commit files
